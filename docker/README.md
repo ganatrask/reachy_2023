@@ -53,7 +53,6 @@ Once in `reachy_2023` environment, you can launch the whole stack, either in fak
 ```
 ros2 launch reachy_bringup reachy.launch.py start_sdk_server:=true fake:=true start_rviz:=true
 ros2 launch reachy_bringup reachy.launch.py start_sdk_server:=true gazebo:=true start_rviz:=true
-
 ```
 
 ## Develoment
@@ -68,8 +67,8 @@ docker compose -f mode/dev.yaml up -d
 You can build the sources with
 ```
 build # build sources
-builds # build sources and source the ROS again
-cbuilds # clean build sources and source the ROS again
+builds # build sources and source the whole ROS environment
+cbuilds # clean build sources and source the ROS environment
 ```
 
 ## Stop
@@ -99,4 +98,4 @@ reachy.r_arm.r_elbow_pitch.goal_position = -90
 ```
 ### From local machine
 You can use the same steps to access your `reachy_2023` environment from your machine, outside of docker.
-Use 127.0.0.1 as an adress and mind having set a `ROS_DOMAIN_ID` env variable *before* launching the compose and your python shell with the Reachy SDK
+Use `127.0.0.1` as an adress and mind having set a `ROS_DOMAIN_ID` env variable *before* launching the compose and your python shell with the Reachy SDK
