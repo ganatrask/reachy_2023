@@ -1,0 +1,14 @@
+services:
+  reachy_2023:
+    image:  pollenrobotics/reachy_2023:1.0
+    container_name: reachy_2023
+    privileged: true
+    environment:
+      - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
+      - DISPLAY=$DISPLAY
+      - "RCUTILS_CONSOLE_OUTPUT_FORMAT=[{severity}]: {message}"
+      - $HOME/.ssh:/home/reachy/.ssh
+    network_mode: "host"
+    entrypoint: sleep infinity
+
+

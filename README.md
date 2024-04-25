@@ -1,7 +1,7 @@
 # Installation
+An alternative installation using Docker can be found [here](docker/README.md)
 
 This guide is meant for an Ubuntu 22.04
-
 ## Environment
 
 ### ROS2 Humble
