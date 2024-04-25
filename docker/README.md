@@ -40,7 +40,7 @@ docker run hello-world
 
 # Reachy 2023
 ## Start
-You may launch the `reachy_2023` container with
+You may launch the `reachy_2023` container by moving to `reachy_2023/docker` then
 ```
 docker compose up -d
 ```
@@ -70,6 +70,7 @@ build # build sources
 builds # build sources and source the whole ROS environment
 cbuilds # clean build sources and source the ROS environment
 ```
+These commands must be done inside the container, so in a terminal where you connected with "docker exec -it reachy_2023 /bin/bash"
 
 ## Stop
 You can stop the `reachy_2023` container with
