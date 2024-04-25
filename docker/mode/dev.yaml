@@ -1,0 +1,9 @@
+x-volume-config: &volumes-config
+  volumes:
+    - $PWD/..:/opt/reachy_ws/src/reachy_2023
+services:
+  reachy_2023:
+    extends:
+      file: ../compose.yaml
+      service: reachy_2023
+    <<: *volumes-config
