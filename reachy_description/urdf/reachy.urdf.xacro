@@ -11,12 +11,76 @@
     <xacro:include filename="$(find reachy_description)/urdf/head.urdf.xacro"/>
     <xacro:include filename="$(find reachy_description)/urdf/orbita.urdf.xacro"/>
 
-    <link name="world"/>
-    <joint name="world_joint" type="fixed">
-        <origin xyz="0 0 1.0" rpy="0 0 0"/>
-        <parent link="world"/>
+    <!-- Add Zuuu mobile base -->
+    <!-- <xacro:include filename="$(find zuuu_description)/urdf/zuuu.urdf.xacro"/> -->
+
+  <xacro:arg name="prefix" default=""/>
+
+  <xacro:arg name="model" default="zuuu" />
+
+  <xacro:arg name="use_gazebo" default="false"/>
+  <xacro:arg name="use_fake_components" default="true"/>
+  <xacro:arg name="use_fixed_wheels" default="true"/>
+  <xacro:arg name="use_ros_control" default="true"/>
+
+
+    <!-- Import zuuu macro -->
+    <xacro:include filename="$(find zuuu_description)/urdf/zuuu_description.urdf.xacro"/>
+
+    <!-- Import Gazebo macro -->
+  <xacro:include filename="$(find zuuu_description)/urdf/zuuu.gazebo.xacro"/>
+
+  <!-- Import Zuuu ros2_control description -->
+  <xacro:include filename="$(find zuuu_description)/urdf/zuuu.ros2_control.xacro"/>
+
+  <xacro:zuuu
+      model="$(arg model)" prefix="$(arg prefix)">
+  </xacro:zuuu>
+
+  <xacro:if value="$(arg use_gazebo)">
+    <xacro:zuuu_gazebo model="$(arg model)" prefix="$(arg prefix)" />
+  </xacro:if>
+
+  <xacro:if value="$(arg use_ros_control)">
+    <xacro:zuuu_ros2_control model="$(arg model)" prefix="$(arg prefix)"/>
+  </xacro:if>
+
+
+
+    <!-- <link name="world"/> -->
+    <!-- <joint name="world_joint" type="fixed"> -->
+    <!--     <origin xyz="0 0 1.0" rpy="0 0 0"/> -->
+    <!--     <parent link="world"/> -->
+    <!--     <child link="torso"/> -->
+    <!-- </joint> -->
+
+    <joint name="base_joint" type="fixed">
+        <origin xyz="-0.006 0 1.0" rpy="0 0 0"/>
+        <parent link="base_link"/>
         <child link="torso"/>
     </joint>
+
+    <link name="bar_link">
+      <visual name="">
+        <origin xyz="0.0 0.0 0.6125" rpy="0.0 0.0 0.0"/>
+            <geometry>
+              <cylinder radius="0.02" length="0.775"/>
+            </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.6125" rpy="0.0 0.0 0.0"/>
+            <geometry>
+              <cylinder radius="0.02" length="0.775"/>
+            </geometry>
+      </collision>
+    </link>
+
+    <joint name="bar_joint" type="fixed">
+        <origin xyz="-0.130 0 0.0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="bar_link"/>
+    </joint>
+
 
     <link name="torso">
         <inertial>

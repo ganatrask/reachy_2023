@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="zuuu">
   <xacro:arg name="prefix" default=""/>
 
-  <xacro:arg name="model" default="" />
+  <xacro:arg name="model" default="zuuu" />
 
-  <xacro:arg name="use_gazebo" default="true"/>
+  <xacro:arg name="use_gazebo" default="false"/>
   <xacro:arg name="use_fake_components" default="true"/>
   <xacro:arg name="use_fixed_wheels" default="true"/>
   <xacro:arg name="use_ros_control" default="true"/>
@@ -18,9 +18,9 @@
   <!-- Import Zuuu ros2_control description -->
   <xacro:include filename="$(find zuuu_description)/urdf/zuuu.ros2_control.xacro"/>
 
-  <xacro:zuuu 
+  <xacro:zuuu
     model="$(arg model)" prefix="$(arg prefix)">
-  </xacro:zuuu> 
+  </xacro:zuuu>
 
   <xacro:if value="$(arg use_gazebo)">
     <xacro:zuuu_gazebo model="$(arg model)" prefix="$(arg prefix)" />
