@@ -89,9 +89,9 @@
 
 
 	<collision>
-	  <origin xyz="0 0 0.160" rpy="0 0 0"/>
+	  <origin xyz="0 0 0.145" rpy="0 0 0"/>
 	  <geometry>
-	    <cylinder radius="0.245" length="0.220"/>
+	    <cylinder radius="0.245" length="0.19"/>
 	  </geometry>
 
 	</collision>
@@ -229,12 +229,12 @@
         <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
       </inertial>
 
-      <!-- <collision> -->
-      <!--   <origin xyz="0 0 0" rpy="0 0 0"/> -->
-      <!--   <geometry> -->
-      <!--     <cylinder radius="0.0508" length="0.055"/> -->
-      <!--   </geometry> -->
-      <!-- </collision> -->
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.035" length="0.035"/>
+        </geometry>
+      </collision>
 
       <!-- <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -250,7 +250,7 @@
       <!-- <origin xyz="0.155 0 0.2" rpy="0 0 0"/> -->
       <!-- The -0.0129 were added on 22 pril 2022 for the second version of Zuuu. The 2mm pads are not taken into account -->
       <!-- <origin xyz="0.155 0 ${-(base_top_height-base_depth/2)+base_top_height+0.105 -0.0129}" rpy="0 0 0"/> -->
-      <origin xyz="0.175 0 0.24" rpy="0 0 0"/>
+      <origin xyz="0.184 0 0.24" rpy="0 0 0"/>
 
     </joint>
 
