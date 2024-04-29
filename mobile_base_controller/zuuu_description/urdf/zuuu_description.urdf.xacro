@@ -18,7 +18,7 @@
     <!-- Define some commonly used intertial properties  -->
     <xacro:macro name="box_inertia" params="m w h d">
       <inertial>
-        <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>      
+        <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
         <mass value="${m}"/>
         <inertia ixx="${(m/12) * (h*h + d*d)}" ixy="0.0" ixz="0.0" iyy="${(m/12) * (w*w + d*d)}" iyz="0.0" izz="${(m/12) * (w*w + h*h)}"/>
       </inertial>
@@ -26,9 +26,9 @@
 
     <xacro:macro name="cylinder_inertia" params="m r h">
       <inertial>
-        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />      
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
         <mass value="${m}"/>
-        <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/> 
+        <inertia ixx="${(m/12) * (3*r*r + h*h)}" ixy = "0" ixz = "0" iyy="${(m/12) * (3*r*r + h*h)}" iyz = "0" izz="${(m/2) * (r*r)}"/>
       </inertial>
     </xacro:macro>
 
@@ -49,24 +49,24 @@
       <parent link="base_footprint"/>
       <child link="base_link"/>
     </joint>
-    
+
     <!-- Robot Base -->
     <link name="base_link">
-      <!-- <visual>
+      <visual>
         <geometry>
           <cylinder radius="${base_radius}" length="${base_depth}"/>
         </geometry>
         <material name="Cyan">
           <color rgba="0 1.0 1.0 1.0"/>
         </material>
-      </visual> -->
-
-      <visual>
-        <origin xyz="0 0 ${(-base_top_height+base_depth/2)}" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="file://$(find zuuu_description)/meshes/reachy_mobile_pauvre.dae"/>
-        </geometry>
       </visual>
+
+      <!-- <visual> -->
+      <!--   <origin xyz="0 0 ${(-base_top_height+base_depth/2)}" rpy="0 0 0"/> -->
+      <!--   <geometry> -->
+      <!--     <mesh filename="package://zuuu_description/meshes/reachy_mobile_pauvre.dae"/> -->
+      <!--   </geometry> -->
+      <!-- </visual> -->
 
       <collision>
         <geometry>
@@ -91,7 +91,7 @@
         </visual> -->
 
         <collision>
-          <origin xyz="0 0 0" rpy="${pi/2} 0 0"/> 
+          <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
           <geometry>
             <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
           </geometry>
@@ -173,22 +173,22 @@
           <box size="0.1 0.1 0.02"/>
         </geometry>
       </visual> -->
-      
+
       <collision>
         <geometry>
           <box size="0.1 0.1 0.1"/>
         </geometry>
       </collision>
-        
+
       <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
     </link>
-      
+
     <joint name="imu_joint" type="fixed">
       <parent link="base_link"/>
       <child link="imu_link"/>
       <origin xyz="0 0 0.01"/>
     </joint>
-  
+
     <link name="lidar_link">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -210,7 +210,7 @@
         </geometry>
       </visual> -->
     </link>
-      
+
     <joint name="lidar_joint" type="fixed">
       <parent link="base_link"/>
       <child link="lidar_link"/>
@@ -218,7 +218,7 @@
       <!-- The -0.0129 were added on 22 pril 2022 for the second version of Zuuu. The 2mm pads are not taken into account -->
       <origin xyz="0.155 0 ${-(base_top_height-base_depth/2)+base_top_height+0.105 -0.0129}" rpy="0 0 0"/>
     </joint>
-    
+
     <link name="camera_link">
       <!-- <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -240,7 +240,7 @@
         <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
       </inertial>
     </link>
-    
+
     <joint name="camera_joint" type="fixed">
       <parent link="base_link"/>
       <child link="camera_link"/>
