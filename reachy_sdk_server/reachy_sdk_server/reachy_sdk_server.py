@@ -53,7 +53,7 @@ class ReachySDKServer(
     def GetAllJointsId(self, request: Empty, context) -> joint_pb2.JointsId:
         names, uids = zip(*[
             (joint['name'], joint['uid'])
-            for joint in self.body_control_node.joints.values()
+            for joint in self.body_control_node.joints.values() if "drivewhl" not in joint['name']
         ])
         return joint_pb2.JointsId(names=names, uids=uids)
 
