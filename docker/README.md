@@ -1,9 +1,20 @@
 # Reachy 2023 with Docker
 Small example about using reachy in a Docker environment
-# Install Docker
-See `https://docs.docker.com/engine/install/ubuntu/`
 
-TL;DR
+
+# Install Docker
+
+What is Docker?
+
+Docker is a platform that simplifies the process of creating, deploying, and running applications using containers. Containers are lightweight and portable, allowing you to package your application and its dependencies into a single unit that can run consistently across different environments.
+
+Why Use Docker?
+
+Using Docker ensures that your development environment is consistent across different machines and operating systems. It eliminates issues related to software dependencies and environment setup, making it easier to onboard new users of Reachy environment.
+
+More info in `https://docs.docker.com/engine/install/ubuntu/`
+
+TL;DR : 
 
 Apt repo
 ```commandline
@@ -21,12 +32,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
-Install stuff
+Install 
 ```commandline
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-(Optional) No Sudo
+(Optional) If you don't want to put sudo before every Docker command, we recommend : 
 ```commandline
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -40,7 +51,11 @@ docker run hello-world
 
 # Reachy 2023
 ## Start
-You may launch the `reachy_2023` container by moving to `reachy_2023/docker` then
+You may launch the `reachy_2023` container, if not already installed then
+```
+git clone https://github.com/pollen-robotics/reachy_2023.git
+```
+Move to `reachy_2023/docker` then
 ```
 docker compose up -d
 ```
@@ -49,13 +64,17 @@ Then connect to it with
 docker exec -it reachy_2023 bash
 ```
 
-Once in `reachy_2023` environment, you can launch the whole stack, either in fake mode or with gazebo backend for simulation
+Once in `reachy_2023` environment, you can launch the whole stack, either in fake mode 
 ```
 ros2 launch reachy_bringup reachy.launch.py start_sdk_server:=true fake:=true start_rviz:=true
+```
+or with gazebo backend for simulation
+```
 ros2 launch reachy_bringup reachy.launch.py start_sdk_server:=true gazebo:=true start_rviz:=true
 ```
+Go to the A simple SDK test section to try it out!
 
-## Develoment
+## Development
 Alternatively, you can use the `reachy_2023` container as a development environment.
 Launch it with 
 ```
