@@ -4,11 +4,11 @@ Small example about using reachy in a Docker environment
 
 # Install Docker
 
-What is Docker?
+**What is Docker?**
 
 Docker is a platform that simplifies the process of creating, deploying, and running applications using containers. Containers are lightweight and portable, allowing you to package your application and its dependencies into a single unit that can run consistently across different environments.
 
-Why Use Docker?
+**Why Use Docker?**
 
 Using Docker ensures that your development environment is consistent across different machines and operating systems. It eliminates issues related to software dependencies and environment setup, making it easier to onboard new users of Reachy environment.
 
@@ -90,6 +90,7 @@ builds # build sources and source the whole ROS environment
 cbuilds # clean build sources and source the ROS environment
 ```
 These commands must be done inside the container, so in a terminal where you connected with "docker exec -it reachy_2023 /bin/bash"
+
 **If in doubt, you should recompile after any source update (also this should not be needed if the modified files are only python)**
 
 ## Stop
