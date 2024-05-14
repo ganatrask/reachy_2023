@@ -90,6 +90,7 @@ builds # build sources and source the whole ROS environment
 cbuilds # clean build sources and source the ROS environment
 ```
 These commands must be done inside the container, so in a terminal where you connected with "docker exec -it reachy_2023 /bin/bash"
+**If in doubt, you should recompile after any source update (also this should not be needed if the modified files are only python)**
 
 ## Stop
 You can stop the `reachy_2023` container with
